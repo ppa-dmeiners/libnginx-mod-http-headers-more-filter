@@ -1,0 +1,34 @@
+#!/bin/sh
+set -e
+
+cat <<EOF > "/etc/nginx/sites-enabled/default"
+server {
+	listen 80 default_server;
+
+	location /helloworld {
+    more_set_headers 'Content-Type: text/helloworld';
+    more_set_headers -s '200' 'Content-Type: text/helloworld200';
+    return 200;
+	}
+}
+EOF
+
+exp="content_type: text/helloworld200
+response_code: 200"
+
+nginx -t
+invoke-rc.d nginx restart || { journalctl -n all -xu nginx.service; exit 1; }
+
+out=`curl --fail -w "content_type: %{content_type}\nresponse_code: %{http_code}\n" http://127.0.0.1/helloworld`
+
+if [ x"${out}" != x"${exp}" ]; then
+  echo "output:"
+  echo "====================="
+  echo "${out}"
+  echo "====================="
+  echo "expected output:"
+  echo "====================="
+  echo "${exp}"
+  echo "====================="
+  exit 1
+fi

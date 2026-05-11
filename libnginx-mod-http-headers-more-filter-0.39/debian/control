@@ -1,0 +1,26 @@
+Source: libnginx-mod-http-headers-more-filter
+Section: httpd
+Priority: optional
+Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+Uploaders: Jan Mojžíš <janmojzis@debian.org>,
+Build-Depends: debhelper-compat (= 13),
+               dh-sequence-nginx,
+Standards-Version: 4.7.2
+Homepage: https://github.com/openresty/headers-more-nginx-module
+Vcs-Git: https://salsa.debian.org/nginx-team/libnginx-mod-http-headers-more-filter.git
+Vcs-Browser: https://salsa.debian.org/nginx-team/libnginx-mod-http-headers-more-filter
+Rules-Requires-Root: no
+
+Package: libnginx-mod-http-headers-more-filter
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: nginx,
+Description: Set and clear input and output headers for Nginx
+ The Headers More module allows you to add, set, or clear any output or input
+ header that you specify.
+ .
+ This is an enhanced version of the standard headers module because it provides
+ more utilities like resetting or clearing "builtin headers" like Content-Type,
+ Content-Length, and Server.
