@@ -1,3 +1,9 @@
+libnginx-mod-http-headers-more-filter (1:0.39-2+ubuntu24.04.1+deb.meiners.net+1.30.8) noble; urgency=medium
+
+  * New upstream version 1.30.8
+
+ -- David Meiners <david@meiners.net>  Sat, 28 Nov 2026 16:05:03 +0000
+
 libnginx-mod-http-headers-more-filter (1:0.39-2+ubuntu24.04.1+deb.meiners.net+1.30.7) noble; urgency=medium
 
   * New upstream version 1.30.7
